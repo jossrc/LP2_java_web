@@ -53,22 +53,19 @@
               <a href="registro.jsp" class="primary-link">aquí</a>
             </p>
 			
-			<%
-				try {
-					String mensaje = (String) request.getAttribute("mensaje");
-	            	if (!mensaje.isEmpty()) {           		
-	        %>
-	          <div class="alert alert-danger" role="alert">
-  				${ mensaje }
-			  </div>  
-	          <%
-	            	  }	
-	            	}
-				catch(Exception e) {
-				  
-				}
-			
-			%>
+            <%
+               try {
+                     String mensaje = (String) request.getAttribute("mensaje");
+                     if (!mensaje.isEmpty()) {           		
+            %>
+               <div class="alert alert-danger" role="alert">
+                    ${ mensaje }
+               </div>  
+            <%
+                        }	
+                     }
+                catch(Exception e) { }
+             %>
 
           </div>
         </div>
