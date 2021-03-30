@@ -12,10 +12,14 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  	/>
     <title>Login</title>
   </head>
   <body>
-    <section id="login">
+    <section id="login" class="animate__animated animate__fadeIn">
       <div class="container mt-4">
         <div class="row justify-content-center">
           <div class="col-xs-12 col-md-8 col-lg-6">

@@ -16,10 +16,14 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  	/>
     <title>Registro</title>
   </head>
   <body>
-    <section id="registro">
+    <section id="registro" class="animate__animated animate__fadeIn">
       <div class="container mt-4">
         <div class="row justify-content-center">
           <div class="col-xs-12 col-md-8 col-lg-6">
