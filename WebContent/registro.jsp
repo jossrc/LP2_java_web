@@ -97,6 +97,6 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/locales/es.js"></script>
-    <script src="js/datePicker.js"></script>
+    <script src="js/datepicker.js"></script>
   </body>
 </html>
