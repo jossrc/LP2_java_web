@@ -1,0 +1,8 @@
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .d-xxs-grid-config-buttons {
+    display: grid !important;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+}
