@@ -24,7 +24,7 @@
         <div class="row justify-content-center">
           <div class="col-xs-12 col-md-8 col-lg-6">
             <h2 class="text-center mb-2 text-primary">Acceso al Sistema</h2>
-            <form class="form mb-3" method="post">
+            <form action="ingreso" class="form mb-3" method="post">
               <div class="mb-3">
                 <label for="txtUsuario" class="form-label">Usuario :</label>
                 <input
@@ -52,6 +52,24 @@
               Para registrar su cuenta, pulse
               <a href="registro.jsp" class="primary-link">aquí</a>
             </p>
+			
+			<%
+				try {
+					String mensaje = (String) request.getAttribute("mensaje");
+	            	if (!mensaje.isEmpty()) {           		
+	        %>
+	          <div class="alert alert-danger" role="alert">
+  				${ mensaje }
+			  </div>  
+	          <%
+	            	  }	
+	            	}
+				catch(Exception e) {
+				  
+				}
+			
+			%>
+
           </div>
         </div>
       </div>
