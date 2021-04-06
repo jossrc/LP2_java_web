@@ -28,7 +28,7 @@
         <div class="row justify-content-center">
           <div class="col-xs-12 col-md-8 col-lg-6">
             <h2 class="text-center mb-2 text-primary">Registro de cuenta</h2>
-            <form action="regusu" class="form mb-3" method="post">
+            <form action="regusu" class="form mb-3 needs-validation" method="post" novalidate>
               <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre :</label>
                 <input
@@ -37,7 +37,12 @@
                   class="form-control"
                   id="txtNombre"
                   placeholder="Ingrese su nombre"
+                  required
+                  maxlength="40"                  
                 />
+                <div class="invalid-feedback">
+                  Se requiere de un nombre válido
+                </div>
               </div>
               <div class="mb-3">
                 <label for="txtApellido" class="form-label">Apellido :</label>
@@ -47,7 +52,12 @@
                   name="txtApellido"
                   id="txtApellido"
                   placeholder="Ingrese su apellido"
+                  required
+                  maxlength="40"
                 />
+                <div class="invalid-feedback">
+                  Se requiere de un apellido válido
+                </div>
               </div>
               <div class="mb-3">
                 <label for="txtUsuario" class="form-label">Usuario :</label>
@@ -57,7 +67,12 @@
                   class="form-control"
                   id="txtUsuario"
                   placeholder="Ingrese su usuario"
+                  required
+                  minlength="4"
                 />
+                <div class="invalid-feedback">
+                  El usuario es obligatorio (+4)
+                </div>
               </div>
               <div class="mb-3">
                 <label for="txtPassword" class="form-label">Contraseña :</label>
@@ -67,7 +82,12 @@
                   name="txtPassword"
                   id="txtPassword"
                   placeholder="Ingrese Password"
+                  required
+                  maxlength="5"
                 />
+                <div class="invalid-feedback">
+                  Se requiere una contraseña válida (max 5)
+                </div>
               </div>
               <div class="mb-3">
                 <label for="txtFechNac" class="form-label"
@@ -80,7 +100,11 @@
                   id="txtFechNac"
                   autocomplete="off"
                   placeholder="Año/Mes/Día"
+                  required
                 />
+                <div class="invalid-feedback">
+                  La fecha de nacimiento es obligatoria
+                </div>
               </div>
 
               <button type="submit" class="btn btn-primary">Registrar</button>
@@ -95,8 +119,9 @@
                      String mensaje = (String) request.getAttribute("mensajeRegistro");
                      if (!mensaje.isEmpty()) {           		
             %>
-               <div class="alert alert-danger" role="alert">
+               <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     ${ mensajeRegistro }
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                </div>  
             <%
                         }	
@@ -116,5 +141,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/locales/es.js"></script>
     <script src="js/datepicker.js"></script>
+    <script src="js/form-validator.js"></script>
   </body>
 </html>
