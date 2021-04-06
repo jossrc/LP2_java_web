@@ -6,12 +6,11 @@ import java.sql.SQLException;
 
 public class MySQLConexion8 {
 
-	@SuppressWarnings("deprecation")
 	public static Connection getConexion() {
 		Connection connection = null;
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/ciberfarmaweb?useSSL=false&useTimezone=true&serverTimezone=UTC";
 			String user = "root";
 			String password = "mysql";
@@ -29,13 +28,13 @@ public class MySQLConexion8 {
 		return connection;
 
 	}
-	
+
 	public static void closeConexion(Connection connection) {
 		try {
 			connection.close();
 		} catch (SQLException e) {
-			System.out.println("Problemas al cerrar la conexion"); 
+			System.out.println("Problemas al cerrar la conexion");
 		}
 	}
-	
+
 }
