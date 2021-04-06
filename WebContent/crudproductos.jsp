@@ -15,7 +15,7 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  	/>
+    />
     <link rel="stylesheet" href="css/crudproductos.css" />
     <title>Mantenimiento de Productos</title>
   </head>
@@ -135,17 +135,33 @@
                 <button
                   type="submit"
                   class="btn btn-primary me-md-2"
-                  type="button"
+                  name="opcion"
+                  value="registrar"
                 >
                   Registrar
                 </button>
-                <button class="btn btn-primary me-md-2" type="button">
+                <button
+                  class="btn btn-primary me-md-2"
+                  type="button"
+                  name="opcion"
+                  value="actualizar"
+                >
                   Actualizar
                 </button>
-                <button class="btn btn-danger me-md-2" type="button">
+                <button
+                  class="btn btn-danger me-md-2"
+                  type="button"
+                  name="opcion"
+                  value="eliminar"
+                >
                   Eliminar
                 </button>
-                <button class="btn btn-warning me-md-2" type="button">
+                <button
+                  class="btn btn-warning me-md-2"
+                  type="button"
+                  name="opcion"
+                  value="listado"
+                >
                   Listado
                 </button>
               </div>
