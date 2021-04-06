@@ -24,7 +24,7 @@
         <div class="row justify-content-center">
           <div class="col-xs-12 col-md-8 col-lg-6">
             <h2 class="text-center mb-2 text-primary">Acceso al Sistema</h2>
-            <form action="ingreso" class="form mb-3" method="post">
+            <form action="ingreso" class="form mb-3 needs-validation" method="post" novalidate>
               <div class="mb-3">
                 <label for="txtUsuario" class="form-label">Usuario :</label>
                 <input
@@ -33,7 +33,11 @@
                   class="form-control"
                   id="txtUsuario"
                   placeholder="Ingrese su usuario"
+                  required
                 />
+                <div class="invalid-feedback">
+                  Se requiere de un usuario válido
+                </div>
               </div>
               <div class="mb-3">
                 <label for="txtPassword" class="form-label">Contraseña :</label>
@@ -43,7 +47,11 @@
                   name="txtPassword"
                   id="txtPassword"
                   placeholder="Ingrese Password"
+                  required
                 />
+                <div class="invalid-feedback">
+                  La contraseña es requerida
+                </div>
               </div>
 
               <button type="submit" class="btn btn-primary">Ingresar</button>
@@ -58,8 +66,9 @@
                      String mensaje = (String) request.getAttribute("mensajeRegistro");
                      if (!mensaje.isEmpty()) {           		
             %>
-               <div class="alert alert-success" role="alert">
+               <div class="alert alert-success alert-dismissible fade show" role="alert">
                     ${ mensajeRegistro }
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                </div>  
             <%
                         }	
@@ -72,8 +81,9 @@
                      String mensaje = (String) request.getAttribute("mensaje");
                      if (!mensaje.isEmpty()) {           		
             %>
-               <div class="alert alert-danger" role="alert">
+               <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     ${ mensaje }
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                </div>  
             <%
                         }	
@@ -91,5 +101,6 @@
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
       crossorigin="anonymous"
     ></script>
+    <script src="js/form-validator.js"></script>
   </body>
 </html>
