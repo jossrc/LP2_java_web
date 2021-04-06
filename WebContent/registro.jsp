@@ -28,7 +28,7 @@
         <div class="row justify-content-center">
           <div class="col-xs-12 col-md-8 col-lg-6">
             <h2 class="text-center mb-2 text-primary">Registro de cuenta</h2>
-            <form class="form mb-3" method="post">
+            <form action="regusu" class="form mb-3" method="post">
               <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre :</label>
                 <input
@@ -89,6 +89,20 @@
               Si ya tiene cuenta, pulse
               <a href="login.jsp" class="primary-link">aquí</a>
             </p>
+            
+            <%
+               try {
+                     String mensaje = (String) request.getAttribute("mensajeRegistro");
+                     if (!mensaje.isEmpty()) {           		
+            %>
+               <div class="alert alert-danger" role="alert">
+                    ${ mensajeRegistro }
+               </div>  
+            <%
+                        }	
+                     }
+                catch(Exception e) { }
+             %>
           </div>
         </div>
       </div>
