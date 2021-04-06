@@ -29,6 +29,7 @@
             </h2>
             <form
               class="form mb-3 needs-validation row"
+              action="prod"
               method="post"
               novalidate
             >
@@ -142,7 +143,7 @@
                 </button>
                 <button
                   class="btn btn-primary me-md-2"
-                  type="button"
+                  type="submit"
                   name="opcion"
                   value="actualizar"
                 >
