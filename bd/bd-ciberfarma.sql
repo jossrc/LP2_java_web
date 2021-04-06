@@ -17,9 +17,9 @@ descripcion varchar(15)
 
 CREATE TABLE tb_usuarios(
 codigo  int auto_increment,
-nombre varchar(15),
-apellido varchar(25),
-usuario  char(45) NOT NULL,
+nombre varchar(40),
+apellido varchar(40),
+usuario  char(45) NOT NULL unique,
 clave    char(5),
 fnacim  date  null,
 tipo    int DEFAULT 2,
@@ -74,10 +74,10 @@ insert into tb_productos values ('P0006','Termometro',80,2.8,5,1);
 insert into tb_productos values ('P0007','Panadol jarabe pq',40,10.5,2,1);
 insert into tb_productos values ('P0008','Antalgina',55,1.8,1,1);
 insert into tb_productos values ('P0009','Ibuprofeno',60,15.0,4,1);
-insert into tb_productos values ('P0010','Mejoralito Niños',10,1.5,1,1);
+insert into tb_productos values ('P0010','Mejoralito NiÃ±os',10,1.5,1,1);
 insert into tb_productos values ('P0011','Panadol jarabe',10,1.5,2,1);
 insert into tb_productos values ('P0012','Jabon Neko',40,8.5,4,1);
-insert into tb_productos values ('P0013','Pa�ales x 24u',10,1.5,5,1);
+insert into tb_productos values ('P0013','Pañales x 24u',10,1.5,5,1);
 insert into tb_productos values ('P0014','Mejoralito Forte',10,1.5,1,1);
 insert into tb_productos values ('P0015','Champu Amigo',50,0.99,5,1);
 insert into tb_productos values ('P0016','Mejoralito',10,1.5,4,1);
