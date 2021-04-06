@@ -52,6 +52,20 @@
               Para registrar su cuenta, pulse
               <a href="registro.jsp" class="primary-link">aquí</a>
             </p>
+            
+            <%
+               try {
+                     String mensaje = (String) request.getAttribute("mensajeRegistro");
+                     if (!mensaje.isEmpty()) {           		
+            %>
+               <div class="alert alert-success" role="alert">
+                    ${ mensajeRegistro }
+               </div>  
+            <%
+                        }	
+                     }
+                catch(Exception e) { }
+             %>
 			
             <%
                try {
