@@ -16,7 +16,7 @@ public class RegistroUsuarioServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Ingresió al Servlet RegistroUsuario");
+		System.out.println("Ingresó al Servlet RegistroUsuario");
 
 		String mensajeRegistro = "";
 		String url;
