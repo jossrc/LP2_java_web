@@ -24,7 +24,7 @@
         <div class="row justify-content-center">
           <div class="col-xs-12 col-md-8 col-lg-6">
             <h2 class="text-center mb-2 text-primary">Acceso al Sistema</h2>
-            <form action="ingreso" class="form mb-3 needs-validation" method="post" novalidate>
+            <form action="user" class="form mb-3 needs-validation" method="post" novalidate>
               <div class="mb-3">
                 <label for="txtUsuario" class="form-label">Usuario :</label>
                 <input
@@ -54,7 +54,7 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary">Ingresar</button>
+              <button type="submit" class="btn btn-primary" name="opcion" value="login">Ingresar</button>
             </form>
             <p>
               Para registrar su cuenta, pulse

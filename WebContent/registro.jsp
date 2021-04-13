@@ -28,7 +28,7 @@
         <div class="row justify-content-center">
           <div class="col-xs-12 col-md-8 col-lg-6">
             <h2 class="text-center mb-2 text-primary">Registro de cuenta</h2>
-            <form action="regusu" class="form mb-3 needs-validation" method="post" novalidate>
+            <form action="user" class="form mb-3 needs-validation" method="post" novalidate>
               <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre :</label>
                 <input
@@ -107,7 +107,7 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary">Registrar</button>
+              <button type="submit" class="btn btn-primary" name="opcion" value="registro">Registrar</button>
             </form>
             <p>
               Si ya tiene cuenta, pulse
