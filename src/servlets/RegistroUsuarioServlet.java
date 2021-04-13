@@ -13,7 +13,7 @@ import model.Usuario;
 /**
  * @deprecated
  * Este Servlet fue reemplazado por el UsuarioServlet
- * debido a que implementa el método login con
+ * debido a que implementa el método registro con
  * sus respectivas validaciones
  * @author jossr
  */
