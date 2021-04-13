@@ -18,6 +18,12 @@ public class Producto {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "Producto [id=" + id + ", descripcion=" + descripcion + ", stock=" + stock + ", precio=" + precio
+                + ", idCategoria=" + idCategoria + ", estado=" + estado + "]";
+    }
+
     public String getId() {
         return id;
     }
