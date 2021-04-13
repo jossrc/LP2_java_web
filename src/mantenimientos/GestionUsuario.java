@@ -37,4 +37,10 @@ public class GestionUsuario implements UsuarioInterface {
         return rs;
     }
 
+    @Override
+    public Usuario validar(String usuario, String password) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }
