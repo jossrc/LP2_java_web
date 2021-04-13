@@ -7,6 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @deprecated
+ * Este Servlet fue reemplazado por el UsuarioServlet
+ * debido a que implementa el método login con
+ * sus respectivas validaciones
+ * @author jossr
+ */
 @WebServlet(name = "ingreso", urlPatterns = { "/ingreso" })
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;

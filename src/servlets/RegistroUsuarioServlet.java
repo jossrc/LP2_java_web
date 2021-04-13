@@ -10,6 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import mantenimientos.GestionUsuario;
 import model.Usuario;
 
+/**
+ * @deprecated
+ * Este Servlet fue reemplazado por el UsuarioServlet
+ * debido a que implementa el método login con
+ * sus respectivas validaciones
+ * @author jossr
+ */
 @WebServlet(name = "regusu", urlPatterns = { "/regusu" })
 public class RegistroUsuarioServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
