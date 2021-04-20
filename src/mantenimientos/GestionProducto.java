@@ -2,6 +2,7 @@ package mantenimientos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 import interfaces.ProductoInterface;
 import model.Producto;
@@ -89,6 +90,22 @@ public class GestionProducto implements ProductoInterface {
         }
 
         return rs;
+    }
+
+    @Override
+    public ArrayList<Producto> listado() {
+        ArrayList<Producto> lista = null;
+        
+        return lista;
+    }
+
+    @Override
+    public ArrayList<Producto> listadoPorCategoria(int categoria) {
+        
+        ArrayList<Producto> lista = null;
+        
+        
+        return lista;
     }
 
 }
