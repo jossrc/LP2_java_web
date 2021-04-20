@@ -1,3 +1,5 @@
+<%@page import="model.Producto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,14 +14,16 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
+    <script src="https://kit.fontawesome.com/2e12710f36.js" crossorigin="anonymous"></script>
     <title>Listado de Productos</title>
   </head>
   <body>
-    <div class="title-container col bg-primary p-2 mt-4">
+    <div class="title-container col bg-primary p-2">
       <h1 class="title text-center text-white">Listado de Productos</h1>
     </div>
 
     <div class="container mt-4">
+      <a class="btn btn-primary mb-3" href="prod?opcion=listado"><i class="fas fa-arrow-circle-down"></i> Cargar</a>
       <div class="table-responsive text-nowrap">
         <table class="table table-hover">
           <thead>
@@ -33,29 +37,40 @@
             </tr>
           </thead>
           <tbody>
+          
+          <%
+            @SuppressWarnings("unchecked")
+            ArrayList<Producto> lstProductos = (ArrayList<Producto>) request.getAttribute("lstProductos");
+            if (lstProductos != null) {
+                for (Producto prod : lstProductos) {                   
+          %>          
             <tr>
-              <th scope="row">${prod.codigo}</th>
-              <td>${prod.descripcion}</td>
-              <td>${prod.precio}</td>
-              <td>${prod.stock}</td>
-              <td>${prod.nomMarca}</td>
+              <th scope="row"><%=prod.getId() %></th>
+              <td><%=prod.getDescripcion() %></td>
+              <td><%=prod.getPrecio() %></td>
+              <td><%=prod.getStock() %></td>
+              <td><%=prod.getIdCategoria() %></td>
               <td>
                 <div class="btn-container">
                   <a
-                    href="ServletProducto?tipo=buscar&cod=${prod.codigo}"
+                    href=""
                     class="btn btn-success ml-3"
                   >
-                    <i class="fas fa-edit">Buscar</i>
+                    <i class="fas fa-edit"></i>
                   </a>
                   <a
-                    href="ServletProducto?tipo=eliminar&cod=${prod.codigo}"
+                    href=""
                     class="btn btn-danger"
                   >
-                    <i class="fas fa-trash-alt">Eliminar</i>
+                    <i class="fas fa-trash-alt"></i>
                   </a>
                 </div>
               </td>
             </tr>
+            <% 
+               }
+             }
+            %>
           </tbody>
         </table>
       </div>
