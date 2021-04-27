@@ -138,4 +138,42 @@ public class GestionProducto implements ProductoInterface {
         return lista;
     }
 
+    @Override
+    public Producto buscar(String codigo) {
+        Producto producto = null;
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = MySQLConexion8.getConexion();
+            String sql = "select * from tb_productos where idprod = ?";
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, codigo);
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String codProd = resultSet.getString(1);
+                String descripcion = resultSet.getString(2);
+                int stock = resultSet.getInt(3);
+                double precio = resultSet.getDouble(4);
+                int categoria = resultSet.getInt(5);
+                int estado = resultSet.getInt(6);
+
+                producto = new Producto(codProd, descripcion, stock, precio, categoria, estado);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al buscar producto " + e.getMessage());
+        } finally {
+            MySQLConexion8.closeConexion(connection);
+        }
+
+        return producto;
+    }
+
 }

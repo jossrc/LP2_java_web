@@ -24,26 +24,42 @@ public class ProductoServlet extends HttpServlet {
 
         try {
             switch (opcion) {
-              case "registrar":
-                  registrar(request, response);
-                  break;
-              case "actualizar":
-                  actualizar(request, response);
-                  break;
-              case "eliminar":
-                  eliminar(request, response);
-                  break;
-              case "listado":
-                  listar(request, response);
-                  break;
-              default:
-                  System.out.println("ERROR EN LAS OPCIONES");
-                  break;
+            case "registrar":
+                registrar(request, response);
+                break;
+            case "actualizar":
+                actualizar(request, response);
+                break;
+            case "eliminar":
+                eliminar(request, response);
+                break;
+            case "listado":
+                listar(request, response);
+                break;
+            case "buscar":
+                buscar(request, response);
+                break;
+            default:
+                System.out.println("ERROR EN LAS OPCIONES");
+                break;
             }
         } catch (Exception e) {
-            //response.sendRedirect("error.jsp");
+            // response.sendRedirect("error.jsp");
             System.out.println("Error inesperado en el Producto Servlet");
         }
+
+    }
+
+    private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Entro al proceso de busqueda");
+
+        String codigo = request.getParameter("cod");
+
+        Producto producto = new GestionProducto().buscar(codigo);
+
+        request.setAttribute("p", producto);
+
+        request.getRequestDispatcher("/crudproductos.jsp").forward(request, response);
 
     }
 

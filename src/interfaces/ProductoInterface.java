@@ -15,4 +15,6 @@ public interface ProductoInterface {
     public ArrayList<Producto> listado();
     
     public ArrayList<Producto> listadoPorCategoria(int categoria);
+    
+    public Producto buscar(String codigo);
 }

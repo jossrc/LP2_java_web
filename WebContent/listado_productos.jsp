@@ -53,7 +53,7 @@
               <td>
                 <div class="btn-container">
                   <a
-                    href=""
+                    href="prod?cod=<%=prod.getId()%>&opcion=buscar"
                     class="btn btn-success ml-3"
                   >
                     <i class="fas fa-edit"></i>
