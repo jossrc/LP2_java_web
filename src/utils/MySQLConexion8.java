@@ -11,11 +11,7 @@ public class MySQLConexion8 {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            int PORT = 3306;
-            String DB_NAME = "ciberfarmaweb";
-
-            String URL = "jdbc:mysql://localhost:" + PORT + "/" + DB_NAME
-                    + "?useSSL=false&useTimezone=true&serverTimezone=UTC";
+            String URL = "jdbc:mysql://localhost:3306/ciberfarmaweb?useSSL=false&useTimezone=true&serverTimezone=UTC";
             String USER = "root";
             String PASSWORD = "mysql";
 
