@@ -1,6 +1,6 @@
-package model;
+package beans;
 
-public class Usuario {
+public class UsuarioDTO {
 
     private int codigo;
     private String nombre;
@@ -11,7 +11,7 @@ public class Usuario {
     private int tipo;
     private int estado;
 
-    public Usuario(int codigo, String nombre, String apellido, String usuario, String password, String fechNac,
+    public UsuarioDTO(int codigo, String nombre, String apellido, String usuario, String password, String fechNac,
             int tipo, int estado) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -23,7 +23,7 @@ public class Usuario {
         this.estado = estado;
     }
 
-    public Usuario(String nombre, String apellido, String usuario, String password, String fechNac) {
+    public UsuarioDTO(String nombre, String apellido, String usuario, String password, String fechNac) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;

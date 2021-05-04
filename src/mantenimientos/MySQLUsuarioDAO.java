@@ -3,14 +3,14 @@ package mantenimientos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import interfaces.UsuarioInterface;
-import model.Usuario;
+import beans.UsuarioDTO;
+import interfaces.UsuarioDAO;
 import utils.MySQLConexion8;
 
-public class GestionUsuario implements UsuarioInterface {
+public class MySQLUsuarioDAO implements UsuarioDAO {
 
     @Override
-    public int registrar(Usuario usuario) {
+    public int registrar(UsuarioDTO usuario) {
         int rs = 0;
 
         Connection connection = null;
@@ -38,7 +38,7 @@ public class GestionUsuario implements UsuarioInterface {
     }
 
     @Override
-    public Usuario validar(String usuario, String password) {
+    public UsuarioDTO validar(String usuario, String password) {
         // TODO Auto-generated method stub
         return null;
     }

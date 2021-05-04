@@ -1,4 +1,4 @@
-<%@page import="model.Producto"%>
+<%@page import="beans.ProductoDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -39,11 +39,11 @@
           <tbody>
           
           <%
-            @SuppressWarnings("unchecked")
-            ArrayList<Producto> lstProductos = (ArrayList<Producto>) request.getAttribute("lstProductos");
-            if (lstProductos != null) {
-                for (Producto prod : lstProductos) {                   
-          %>          
+                    @SuppressWarnings("unchecked")
+                        ArrayList<ProductoDTO> lstProductos = (ArrayList<ProductoDTO>) request.getAttribute("lstProductos");
+                        if (lstProductos != null) {
+                            for (ProductoDTO prod : lstProductos) {
+                    %>          
             <tr>
               <th scope="row"><%=prod.getId() %></th>
               <td><%=prod.getDescripcion() %></td>

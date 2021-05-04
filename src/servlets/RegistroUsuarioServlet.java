@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mantenimientos.GestionUsuario;
-import model.Usuario;
+import beans.UsuarioDTO;
+import mantenimientos.MySQLUsuarioDAO;
 
 /**
  * @deprecated
@@ -34,9 +34,9 @@ public class RegistroUsuarioServlet extends HttpServlet {
         String password = request.getParameter("txtPassword");
         String fechNac = request.getParameter("txtFechNac");
 
-        Usuario usuarioBD = new Usuario(nombre, apellido, usuario, password, fechNac);
+        UsuarioDTO usuarioBD = new UsuarioDTO(nombre, apellido, usuario, password, fechNac);
 
-        GestionUsuario gestionUsuario = new GestionUsuario();
+        MySQLUsuarioDAO gestionUsuario = new MySQLUsuarioDAO();
         int ok = gestionUsuario.registrar(usuarioBD);
 
         if (ok == 0) {

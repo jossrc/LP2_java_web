@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mantenimientos.GestionProducto;
-import model.Producto;
+import beans.ProductoDTO;
+import dao.DAOFactory;
+import interfaces.ProductoDAO;
+import mantenimientos.MySQLProductoDAO;
 
 @WebServlet(name = "prod", urlPatterns = { "/prod" })
 public class ProductoServlet extends HttpServlet {
@@ -55,7 +57,7 @@ public class ProductoServlet extends HttpServlet {
 
         String codigo = request.getParameter("cod");
 
-        Producto producto = new GestionProducto().buscar(codigo);
+        ProductoDTO producto = new MySQLProductoDAO().buscar(codigo);
 
         request.setAttribute("p", producto);
 
@@ -81,8 +83,11 @@ public class ProductoServlet extends HttpServlet {
     private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("Listado");
 
-        // Obtener el listado
-        ArrayList<Producto> lista = new GestionProducto().listado();
+        // Usando el Patron DAO
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);        
+        ProductoDAO dao = factory.getProductoDAO();
+        ArrayList<ProductoDTO> lista = dao.listado();
+        
         // Enviar el listado al JSP
         request.setAttribute("lstProductos", lista);
         request.getRequestDispatcher("listado_productos.jsp").forward(request, response);

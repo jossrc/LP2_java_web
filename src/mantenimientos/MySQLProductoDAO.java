@@ -5,14 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import interfaces.ProductoInterface;
-import model.Producto;
+import beans.ProductoDTO;
+import interfaces.ProductoDAO;
 import utils.MySQLConexion8;
 
-public class GestionProducto implements ProductoInterface {
+public class MySQLProductoDAO implements ProductoDAO {
 
     @Override
-    public int registrar(Producto producto) {
+    public int registrar(ProductoDTO producto) {
         int rs = 0;
 
         Connection connection = null;
@@ -41,7 +41,7 @@ public class GestionProducto implements ProductoInterface {
     }
 
     @Override
-    public int actualizar(Producto producto) {
+    public int actualizar(ProductoDTO producto) {
         int rs = 0;
 
         Connection connection = null;
@@ -70,7 +70,7 @@ public class GestionProducto implements ProductoInterface {
     }
 
     @Override
-    public int eliminar(Producto producto) {
+    public int eliminar(ProductoDTO producto) {
         int rs = 0;
 
         Connection connection = null;
@@ -94,8 +94,8 @@ public class GestionProducto implements ProductoInterface {
     }
 
     @Override
-    public ArrayList<Producto> listado() {
-        ArrayList<Producto> lista = null;
+    public ArrayList<ProductoDTO> listado() {
+        ArrayList<ProductoDTO> lista = null;
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -107,7 +107,7 @@ public class GestionProducto implements ProductoInterface {
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
-            lista = new ArrayList<Producto>();
+            lista = new ArrayList<ProductoDTO>();
 
             while (resultSet.next()) {
                 String codigo = resultSet.getString(1);
@@ -117,7 +117,7 @@ public class GestionProducto implements ProductoInterface {
                 int categoria = resultSet.getInt(5);
                 int estado = resultSet.getInt(6);
 
-                Producto prod = new Producto(codigo, descripcion, stock, precio, categoria, estado);
+                ProductoDTO prod = new ProductoDTO(codigo, descripcion, stock, precio, categoria, estado);
                 lista.add(prod);
             }
 
@@ -131,16 +131,16 @@ public class GestionProducto implements ProductoInterface {
     }
 
     @Override
-    public ArrayList<Producto> listadoPorCategoria(int categoria) {
+    public ArrayList<ProductoDTO> listadoPorCategoria(int categoria) {
 
-        ArrayList<Producto> lista = null;
+        ArrayList<ProductoDTO> lista = null;
 
         return lista;
     }
 
     @Override
-    public Producto buscar(String codigo) {
-        Producto producto = null;
+    public ProductoDTO buscar(String codigo) {
+        ProductoDTO producto = null;
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -163,7 +163,7 @@ public class GestionProducto implements ProductoInterface {
                 int categoria = resultSet.getInt(5);
                 int estado = resultSet.getInt(6);
 
-                producto = new Producto(codProd, descripcion, stock, precio, categoria, estado);
+                producto = new ProductoDTO(codProd, descripcion, stock, precio, categoria, estado);
 
             }
 

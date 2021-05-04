@@ -1,6 +1,6 @@
-package model;
+package beans;
 
-public class Producto {
+public class ProductoDTO {
 
     private String id;
     private String descripcion;
@@ -9,7 +9,7 @@ public class Producto {
     private int idCategoria;
     private int estado;
 
-    public Producto(String id, String descripcion, int stock, double precio, int idCategoria, int estado) {
+    public ProductoDTO(String id, String descripcion, int stock, double precio, int idCategoria, int estado) {
         this.id = id;
         this.descripcion = descripcion;
         this.stock = stock;
