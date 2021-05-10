@@ -2,6 +2,7 @@ package interfaces;
 
 import java.util.ArrayList;
 
+import beans.CategoriaDTO;
 import beans.ProductoDTO;
 
 public interface ProductoDAO {
@@ -13,6 +14,8 @@ public interface ProductoDAO {
     public int eliminar(ProductoDTO producto);
     
     public ArrayList<ProductoDTO> listado();
+    
+    public ArrayList<CategoriaDTO> listadoCategoria();
     
     public ArrayList<ProductoDTO> listadoPorCategoria(int categoria);
     
