@@ -59,7 +59,7 @@ public class ProductoServlet extends HttpServlet {
 
         ProductoDTO producto = new MySQLProductoDAO().buscar(codigo);
 
-        request.setAttribute("p", producto);
+        request.setAttribute("existeProducto", producto);
 
         request.getRequestDispatcher("/crudproductos.jsp").forward(request, response);
 

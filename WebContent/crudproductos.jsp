@@ -1,3 +1,4 @@
+<%@page import="beans.ProductoDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,6 +21,12 @@
     <title>Mantenimiento de Productos</title>
   </head>
   <body>
+  
+    <%    
+      ProductoDTO producto = (ProductoDTO) request.getAttribute("existeProducto");
+      boolean existeProducto = producto != null;
+    %>  
+  
     <section id="registro" class="animate__animated animate__fadeIn">
       <div class="container mt-4">
         <div class="row justify-content-center">
@@ -43,6 +50,7 @@
                   class="form-control"
                   id="txtCodigoProd"
                   placeholder="Ingrese Código"
+                  value="<%=existeProducto ? producto.getId() : "" %>"
                   required
                 />
                 <div class="invalid-feedback">Ingrese un código válido</div>
@@ -57,6 +65,7 @@
                   name="txtDescripcionProd"
                   id="txtDescripcionProd"
                   placeholder="Ingrese nombre o descripción del producto"
+                  value="<%=existeProducto ? producto.getDescripcion() : "" %>"
                   required
                 />
                 <div class="invalid-feedback">
@@ -72,6 +81,7 @@
                   id="txtStockProd"
                   placeholder="0"
                   min="0"
+                  value="<%=existeProducto ? producto.getStock() : "" %>"
                   required
                 />
                 <div class="invalid-feedback">
@@ -88,6 +98,7 @@
                   placeholder="0.00"
                   min="0"
                   step="any"
+                  value="<%=existeProducto ? producto.getPrecio() : "" %>"
                   required
                 />
                 <div class="invalid-feedback">Se requiere un precio válido</div>
@@ -103,7 +114,7 @@
                   aria-label="Categoría de Productos"
                   required
                 >
-                  <option selected disabled hidden="hidden" value="">
+                  <option <%=existeProducto ? "": "selected" %> disabled hidden="hidden" value="">
                     Seleccione...
                   </option>
                   <option value="1">Pastillas</option>
