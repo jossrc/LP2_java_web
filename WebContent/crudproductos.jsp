@@ -1,3 +1,6 @@
+<%@page import="beans.CategoriaDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.DAOFactory"%>
 <%@page import="beans.ProductoDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -106,7 +109,7 @@
               <div class="mb-3 col-md-6 col-xs-12">
                 <label for="cboCategoriaProd" class="form-label"
                   >Categoría :</label
-                >
+                >                
                 <select
                   id="cboCategoriaProd"
                   name="cboCategoriaProd"
@@ -114,12 +117,26 @@
                   aria-label="Categoría de Productos"
                   required
                 >
+                
+                <%
+                  DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+                  ArrayList<CategoriaDTO> categorias = factory.getProductoDAO().listadoCategoria();
+                %>
                   <option <%=existeProducto ? "": "selected" %> disabled hidden="hidden" value="">
                     Seleccione...
                   </option>
-                  <option value="1">Pastillas</option>
-                  <option value="2">Jarabes</option>
-                  <option value="3">Medicamento General</option>
+                  
+                  <%                
+                  for( CategoriaDTO categoria: categorias ) {  
+                    try {
+                  %>
+                  <option value="<%=categoria.getId()%>"
+                          <%=existeProducto && producto.getIdCategoria() == categoria.getId() ? "selected": "" %>>
+                    <%=categoria.getDescripcion() %>
+                  </option>
+
+                  <% } catch(Exception e) { } } %>
+                               
                 </select>
                 <div class="invalid-feedback">Seleccione una categoría</div>
               </div>
@@ -132,11 +149,22 @@
                   aria-label="Estado de Productos"
                   required
                 >
-                  <option selected disabled hidden="hidden" value="">
+                  <option <%=existeProducto ? "": "selected" %> disabled hidden="hidden" value="">
                     Seleccione...
                   </option>
-                  <option value="1">Activo</option>
-                  <option value="0">No Disponible</option>
+                  <%
+                    try{ %>
+
+                  <option value="1" 
+                          <%=existeProducto && producto.getIdCategoria() == 1 ? "selected": "" %>>
+                        Activo
+                  </option>
+                  <option value="0" 
+                          <%=existeProducto && producto.getIdCategoria() == 0 ? "selected": "" %>>
+                        No Disponible
+                  </option>
+                  
+                  <% } catch(Exception e) {} %>
                 </select>
                 <div class="invalid-feedback">Seleccione un estado</div>
               </div>
