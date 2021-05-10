@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import beans.CategoriaDTO;
 import beans.ProductoDTO;
 import interfaces.ProductoDAO;
 import utils.MySQLConexion8;
@@ -174,6 +175,39 @@ public class MySQLProductoDAO implements ProductoDAO {
         }
 
         return producto;
+    }
+
+    @Override
+    public ArrayList<CategoriaDTO> listadoCategoria() {
+        ArrayList<CategoriaDTO> lista = null;
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = MySQLConexion8.getConexion();
+            String sql = "select * from tb_categorias";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+
+            lista = new ArrayList<CategoriaDTO>();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String descripcion = resultSet.getString(2);
+
+                CategoriaDTO categoria = new CategoriaDTO(id, descripcion);
+                lista.add(categoria);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error en listado categoria " + e.getMessage());
+        } finally {
+            MySQLConexion8.closeConexion(connection);
+        }
+
+        return lista;
     }
 
 }
