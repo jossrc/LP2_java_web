@@ -1,13 +1,17 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.UsuarioDTO;
+import dao.DAOFactory;
 import mantenimientos.MySQLUsuarioDAO;
 
 @WebServlet(name = "user", urlPatterns = { "/user" })
@@ -16,19 +20,37 @@ public class UsuarioServlet extends HttpServlet {
 
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String opcion = request.getParameter("opcion");
+        opcion = (opcion == null) ? "logout" : opcion;
+
         System.out.println("Opción seleccionada : " + opcion);
 
         switch (opcion) {
         case "login":
             login(request, response);
             break;
+        case "logout":
+            logout(request, response);
+            break;
         case "registro":
             registro(request, response);
             break;
         default:
+            logout(request, response);
             break;
         }
+
+    }
+
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        System.out.println("Cerrando la sesión actual");
+        System.out.println("ID Sesión " + request.getSession().getId());
+
+        request.getSession().invalidate();
+
+        response.sendRedirect("login.jsp");
 
     }
 
@@ -62,18 +84,41 @@ public class UsuarioServlet extends HttpServlet {
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // Trabajando con sesiones
+        HttpSession mySession = request.getSession();
+        System.out.println("ID Sesión          : " + mySession.getId());
+        System.out.println("Fech/Hor creación  : " + new SimpleDateFormat().format(mySession.getCreationTime()));
+        System.out.println("Tiemp inactividad  : " + mySession.getMaxInactiveInterval());
+
         String url = "";
 
         String usuario = request.getParameter("txtUsuario").trim();
         String password = request.getParameter("txtPassword").trim();
 
-        if (usuario.equalsIgnoreCase("admin") && password.equals("12345")) {
+        System.out.println(usuario);
+        System.out.println(password);
+
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        UsuarioDTO usuarioDTO = factory.getUsuarioDAO().validar(usuario, password);
+
+        if (usuarioDTO != null) {
             url = "/principal.jsp";
             request.setAttribute("saludo", "Bienvenido " + usuario);
+            // request.setAttribute("usuarioEncontrado", usuarioDTO);
+            request.getSession().setAttribute("usuarioEncontrado", usuarioDTO);
+            // ${usuarioEncontrado.nombre} ->
         } else {
             url = "/login.jsp";
             request.setAttribute("mensaje", "Usuario o clave incorrecto");
         }
+
+        /*
+         * if (usuario.equalsIgnoreCase("admin") && password.equals("12345")) { url =
+         * "/principal.jsp"; request.setAttribute("saludo", "Bienvenido " + usuario); }
+         * else { url = "/login.jsp"; request.setAttribute("mensaje",
+         * "Usuario o clave incorrecto"); }
+         */
 
         request.getRequestDispatcher(url).forward(request, response);
 
