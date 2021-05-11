@@ -110,4 +110,3 @@ begin
 select * from tb_usuarios where usuario = usr and clave = pas;
 end$$
 DELIMiTER ;
-
