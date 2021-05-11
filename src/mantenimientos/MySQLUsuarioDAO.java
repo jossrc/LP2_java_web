@@ -2,6 +2,7 @@ package mantenimientos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import beans.UsuarioDTO;
 import interfaces.UsuarioDAO;
@@ -39,8 +40,44 @@ public class MySQLUsuarioDAO implements UsuarioDAO {
 
     @Override
     public UsuarioDTO validar(String usuario, String password) {
-        // TODO Auto-generated method stub
-        return null;
+        UsuarioDTO usuarioDTO = null;
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = MySQLConexion8.getConexion();
+            String sql = "{call usp_validaAcceso(?,?)}";
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, usuario);
+            preparedStatement.setString(2, password);
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                
+                int id = resultSet.getInt(1);
+                String nombre = resultSet.getString(2);
+                String apellido = resultSet.getString(3);
+                String user = resultSet.getString(4);
+                String pass = resultSet.getString(5);
+                String fechNac = resultSet.getString(6);
+                int tipo = resultSet.getInt(7);
+                int estado = resultSet.getInt(8);
+
+                usuarioDTO = new UsuarioDTO(id, nombre, apellido, user, pass, fechNac, tipo, estado);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al buscar producto " + e.getMessage());
+        } finally {
+            MySQLConexion8.closeConexion(connection);
+        }
+
+        return usuarioDTO;
     }
 
 }
