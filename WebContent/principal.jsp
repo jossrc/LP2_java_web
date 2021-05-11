@@ -1,5 +1,15 @@
+<%@page import="beans.UsuarioDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%
+  UsuarioDTO user = (UsuarioDTO) request.getSession().getAttribute("usuarioEncontrado");
+  if (user == null) {
+      response.sendRedirect("login.jsp");
+  }
+  
+%>    
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
