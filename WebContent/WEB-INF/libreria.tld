@@ -12,6 +12,13 @@
     <info>Muestra la cabecera del proyecto</info>	
   </tag>
 
+  <tag>	
+    <name>comboCat</name>	
+    <tagclass>etiquetas.ComboCategoriaTag</tagclass>	
+    <bodycontent>empty</bodycontent>	
+    <info>Muestra las opciones del combo de categorias</info>	
+  </tag>
+
   <!-- otras etiquetas de la librería -->
 
 </taglib>
