@@ -39,11 +39,11 @@
           <tbody>
           
           <%
-                    @SuppressWarnings("unchecked")
-                        ArrayList<ProductoDTO> lstProductos = (ArrayList<ProductoDTO>) request.getAttribute("lstProductos");
-                        if (lstProductos != null) {
-                            for (ProductoDTO prod : lstProductos) {
-                    %>          
+             @SuppressWarnings("unchecked")
+             ArrayList<ProductoDTO> lstProductos = (ArrayList<ProductoDTO>) request.getAttribute("lstProductos");
+               if (lstProductos != null) {
+                  for (ProductoDTO prod : lstProductos) {
+           %>          
             <tr>
               <th scope="row"><%=prod.getId() %></th>
               <td><%=prod.getDescripcion() %></td>
