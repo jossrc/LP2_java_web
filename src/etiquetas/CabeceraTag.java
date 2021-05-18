@@ -15,7 +15,7 @@ public class CabeceraTag extends TagSupport {
         JspWriter out = pageContext.getOut();
 
         try {
-            out.println("<h1>CiberFarma Presente</h1>");
+            out.println("<h1 class='text-center'>CiberFarma Presente</h1>");
         } catch (IOException e) {
             System.out.println("Error en inicio de CabeceraTag : " + e.getMessage());
         }
