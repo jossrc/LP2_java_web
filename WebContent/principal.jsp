@@ -1,3 +1,5 @@
+<%@ taglib uri="/WEB-INF/libreria.tld" prefix="tools" %>
+
 <%@page import="beans.UsuarioDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -26,7 +28,7 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center">CiberFarma</h1>
+      <tools:cabecera/>
       <p class="text-center">${ saludo }</p>
     </div>
 
