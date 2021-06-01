@@ -4,6 +4,8 @@
 <%@page import="beans.ProductoDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib uri="/WEB-INF/libreria.tld" prefix="tools" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -137,6 +139,10 @@
 
                   <% } catch(Exception e) { } } %>
                                
+                </select>
+                  
+                <select>
+                  <tools:comboCat/>
                 </select>
                 <div class="invalid-feedback">Seleccione una categoría</div>
               </div>
