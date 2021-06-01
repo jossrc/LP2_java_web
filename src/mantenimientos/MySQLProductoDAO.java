@@ -179,7 +179,7 @@ public class MySQLProductoDAO implements ProductoDAO {
 
     @Override
     public ArrayList<CategoriaDTO> listadoCategoria() {
-        ArrayList<CategoriaDTO> lista = null;
+        ArrayList<CategoriaDTO> lista = new ArrayList<CategoriaDTO>();;
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -190,8 +190,6 @@ public class MySQLProductoDAO implements ProductoDAO {
             String sql = "select * from tb_categorias";
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
-
-            lista = new ArrayList<CategoriaDTO>();
 
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);

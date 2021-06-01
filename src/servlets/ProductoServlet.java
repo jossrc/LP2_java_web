@@ -41,6 +41,12 @@ public class ProductoServlet extends HttpServlet {
             case "buscar":
                 buscar(request, response);
                 break;
+            case "cargar":
+                cargar(request, response);
+                break;
+            case "select":
+                seleccionar(request, response);
+                break;
             default:
                 System.out.println("ERROR EN LAS OPCIONES");
                 break;
@@ -49,6 +55,35 @@ public class ProductoServlet extends HttpServlet {
             // response.sendRedirect("error.jsp");
             System.out.println("Error inesperado en el Producto Servlet");
         }
+
+    }
+
+    private void seleccionar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        System.out.println("Entro al proceso de busqueda");
+
+        String codigo = request.getParameter("cod");
+
+        ProductoDTO producto = new MySQLProductoDAO().buscar(codigo);
+        
+        request.getSession().setAttribute("existeProducto", producto);
+
+        //request.getRequestDispatcher("/compra.jsp").forward(request, response);
+        response.sendRedirect("compra.jsp");
+
+    }
+
+    private void cargar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Cargar catalogo");
+
+        // Usando el Patron DAO
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+        ProductoDAO dao = factory.getProductoDAO();
+        ArrayList<ProductoDTO> lista = dao.listado();
+
+        // Enviar el listado al JSP
+        request.setAttribute("lstProductos", lista);
+        request.getRequestDispatcher("catalogo.jsp").forward(request, response);
 
     }
 
@@ -84,10 +119,10 @@ public class ProductoServlet extends HttpServlet {
         System.out.println("Listado");
 
         // Usando el Patron DAO
-        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);        
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
         ProductoDAO dao = factory.getProductoDAO();
         ArrayList<ProductoDTO> lista = dao.listado();
-        
+
         // Enviar el listado al JSP
         request.setAttribute("lstProductos", lista);
         request.getRequestDispatcher("listado_productos.jsp").forward(request, response);
