@@ -2,6 +2,7 @@ package dao;
 
 import interfaces.ProductoDAO;
 import interfaces.UsuarioDAO;
+import interfaces.VentaDAO;
 
 public abstract class DAOFactory {
 
@@ -11,6 +12,7 @@ public abstract class DAOFactory {
     
     public abstract ProductoDAO getProductoDAO();
     public abstract UsuarioDAO getUsuarioDAO();
+    public abstract VentaDAO getVentaDAO();
     
     public static DAOFactory getDAOFactory(int qBD) {
         switch (qBD) {

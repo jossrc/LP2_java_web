@@ -62,7 +62,7 @@
 
 							<tr>
 								<td>
-									<button class="btn btn-primary">
+									<button class="btn btn-primary" name="opcion" value="agregar">
 										Agregar compra <span class="glyphicon glyphicon-shopping-cart"></span>
 									</button>
 							</tr>
